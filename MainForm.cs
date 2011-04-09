@@ -42,6 +42,9 @@ namespace dmh.NinjaTraderRemote
             txtHost.Text = atiManager.ConnectionString;
             btnDisconnect.Enabled = false;
             btnReadAcct.Enabled = false;
+
+            tabControl1.Visible = false;
+
             resetData();
         }
 
@@ -54,7 +57,9 @@ namespace dmh.NinjaTraderRemote
             {
                 btnConnect.Enabled = false;
                 btnDisconnect.Enabled = true;
-                btnReadAcct.Enabled = true;               
+                btnReadAcct.Enabled = true;
+                tabControl1.Visible = true;
+                //tabControl1.Enabled = true;
             }
             else
                 MessageBox.Show("Couldn't connect to ATI server!");
@@ -72,7 +77,9 @@ namespace dmh.NinjaTraderRemote
                     btnConnect.Enabled = true;
                     btnDisconnect.Enabled = false;
                     btnReadAcct.Enabled = false;
-                    resetData();                    
+                    tabControl1.Visible = false;
+                    //tabControl1.Enabled = false;
+                    resetData();
                 }
             }
         }
