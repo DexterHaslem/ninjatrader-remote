@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
             "text1",
             "text2"}, -1);
             this.txtHost = new System.Windows.Forms.TextBox();
@@ -38,13 +38,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblBuyingPower = new System.Windows.Forms.Label();
@@ -55,11 +54,19 @@
             this.txtAcctName = new System.Windows.Forms.TextBox();
             this.btnReadAcct = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtHost
@@ -95,9 +102,9 @@
             this.groupBox3.Controls.Add(this.txtHost);
             this.groupBox3.Controls.Add(this.btnConnect);
             this.groupBox3.Controls.Add(this.btnDisconnect);
-            this.groupBox3.Location = new System.Drawing.Point(12, 285);
+            this.groupBox3.Location = new System.Drawing.Point(9, 413);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(625, 49);
+            this.groupBox3.Size = new System.Drawing.Size(675, 49);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Connection";
@@ -126,39 +133,22 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(9, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(625, 267);
+            this.tabControl1.Size = new System.Drawing.Size(675, 395);
             this.tabControl1.TabIndex = 15;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(617, 238);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Order Entry";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(617, 238);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Market Data";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(617, 238);
+            this.tabPage1.Size = new System.Drawing.Size(667, 366);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Account Status";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -168,7 +158,7 @@
             this.groupBox2.Controls.Add(this.listView1);
             this.groupBox2.Location = new System.Drawing.Point(201, 15);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(410, 215);
+            this.groupBox2.Size = new System.Drawing.Size(460, 217);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Orders";
@@ -177,15 +167,16 @@
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader2});
+            this.columnHeader2,
+            this.columnHeader3});
             this.listView1.GridLines = true;
-            listViewItem5.StateImageIndex = 0;
+            listViewItem6.StateImageIndex = 0;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem5});
-            this.listView1.Location = new System.Drawing.Point(6, 21);
+            listViewItem6});
+            this.listView1.Location = new System.Drawing.Point(6, 18);
             this.listView1.Name = "listView1";
             this.listView1.ShowGroups = false;
-            this.listView1.Size = new System.Drawing.Size(397, 188);
+            this.listView1.Size = new System.Drawing.Size(448, 188);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -193,12 +184,16 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Order ID";
-            this.columnHeader1.Width = 264;
+            this.columnHeader1.Width = 256;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Status";
-            this.columnHeader2.Width = 129;
+            this.columnHeader2.Width = 87;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Fill size";
             // 
             // groupBox1
             // 
@@ -213,7 +208,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(6, 15);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(189, 215);
+            this.groupBox1.Size = new System.Drawing.Size(189, 345);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Account stats";
@@ -221,7 +216,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 154);
+            this.label5.Location = new System.Drawing.Point(6, 287);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(98, 17);
             this.label5.TabIndex = 8;
@@ -271,14 +266,14 @@
             // 
             // txtAcctName
             // 
-            this.txtAcctName.Location = new System.Drawing.Point(110, 151);
+            this.txtAcctName.Location = new System.Drawing.Point(110, 284);
             this.txtAcctName.Name = "txtAcctName";
             this.txtAcctName.Size = new System.Drawing.Size(73, 22);
             this.txtAcctName.TabIndex = 1;
             // 
             // btnReadAcct
             // 
-            this.btnReadAcct.Location = new System.Drawing.Point(6, 177);
+            this.btnReadAcct.Location = new System.Drawing.Point(6, 307);
             this.btnReadAcct.Name = "btnReadAcct";
             this.btnReadAcct.Size = new System.Drawing.Size(177, 32);
             this.btnReadAcct.TabIndex = 6;
@@ -295,11 +290,72 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Cash Value:";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(667, 366);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Order Entry";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(667, 366);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Market Data";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(667, 366);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Positions";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.listView2);
+            this.groupBox4.Location = new System.Drawing.Point(201, 238);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(460, 122);
+            this.groupBox4.TabIndex = 12;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "ATM Strategies";
+            // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5});
+            this.listView2.GridLines = true;
+            this.listView2.Location = new System.Drawing.Point(7, 22);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(447, 93);
+            this.listView2.TabIndex = 0;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Strategy ID";
+            this.columnHeader4.Width = 257;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Position";
+            this.columnHeader5.Width = 87;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 339);
+            this.ClientSize = new System.Drawing.Size(696, 474);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox3);
@@ -313,6 +369,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -343,5 +400,11 @@
         private System.Windows.Forms.TextBox txtAcctName;
         private System.Windows.Forms.Button btnReadAcct;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }

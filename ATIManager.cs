@@ -34,11 +34,8 @@ namespace dmh.NinjaTraderRemote
     // this code sucks bad, I need to rewrite it when I know what I'm doing
     class ATIManager
     {
-        public Client ATIClient;
-        //bool isConnected;
-        DateTime connectionStartTime, connectionEndTime;
+        private Client ATIClient;
         ATIAccount account;
-        //public string AccountName { get; set; }
         private string hostName;
         private int port;
 
@@ -71,9 +68,6 @@ namespace dmh.NinjaTraderRemote
         {
             hostName = hostname;
             this.port = port;
-            // isConnected = ATIClient.SetUp(hostname, port) == 0 ? true : false;
-            //if (isConnected)
-            //    connectionStartTime = DateTime.Now;
         }
 
 
@@ -95,10 +89,7 @@ namespace dmh.NinjaTraderRemote
             if (hostName != "127.0.0.1" && port != 36973)
             {
                 if(ATIClient.SetUp(hostName, port) == 0)
-                {
-                    connectionStartTime = DateTime.Now;
                     return true;
-                }
                 else return false;
             }
             else return true;
@@ -114,29 +105,45 @@ namespace dmh.NinjaTraderRemote
 
         public bool Disconnect()
         {
-            connectionEndTime = DateTime.Now;
             return ATIClient.TearDown() == 0 ? true : false;
         }
 
-        //TODO: 
         public bool SendCommandString(string command, string account, string instrument, string action, int quantity, 
                                       string orderType, double limitPrice, double stopPrice, string timeInForce, string ocoID, 
                                       string orderID, string strategyName, string strategyID)
         {
-            return true;
+            if (account == "Sim101")
+                account = "";
+            int result = ATIClient.Command(command.ToUpper(), account.ToUpper(), instrument.ToUpper(), action.ToUpper(), quantity, 
+                                            orderType.ToUpper(), limitPrice, stopPrice, timeInForce.ToUpper(), ocoID.ToUpper(),
+                                                orderID.ToUpper(), strategyName.ToUpper(), strategyID.ToUpper());
+            return result == 0 ? true : false;
         }
 
-        //TODO: 
         public bool SendCommand(CommandType command, string account, string instrument, ActionType action, int quantity,
                                 OrderType orderType, double limitPrice, double stopPrice, TimeInForce TIF, string ocoID,
                                 string orderID, string strategyName, string strategyID)
         {
-            return true;
+            if (account == "Sim101")
+                account = "";
+            string strCommand       = Enum.GetName(typeof(CommandType), command);
+            string strAction        = Enum.GetName(typeof(ActionType), action);
+            string strOrderType     = Enum.GetName(typeof(OrderType), orderType);
+            string strTIF           = Enum.GetName(typeof(TimeInForce), TIF);
+
+            return SendCommandString(strCommand, account, instrument, strAction, quantity, strOrderType, limitPrice, stopPrice, strTIF,
+                                     ocoID, orderID, strategyName, strategyID);
         }
 
-
+        public int Filled(string orderID)
+        {
+            return ATIClient.Filled(orderID);
+        }
         public ATIAccount ReadAccountInformation(string accountName)
         {
+            if (accountName == "Sim101")
+                accountName = "";
+
             ATIAccount tempAcct = new ATIAccount();
 
             tempAcct.acctName = accountName;
@@ -145,12 +152,31 @@ namespace dmh.NinjaTraderRemote
             tempAcct.RealizedPnL = ATIClient.RealizedPnL(accountName);
             tempAcct.ParseStrategies(ATIClient.Strategies(accountName));
             tempAcct.ParseOrders(ATIClient.Orders(accountName));
+            tempAcct.ParseStrategies(ATIClient.Strategies(accountName));
+
             return tempAcct;
         }
 
         public void ReadAccountInformation(ATIAccount acct, string accountName)
         {
             acct = ReadAccountInformation(accountName);
+        }
+
+        public string OrderStatus(string orderID)
+        {
+            return ATIClient.OrderStatus(orderID);
+        }
+
+        public string StrategyPosition(string strategyID)
+        {
+            int result = ATIClient.StrategyPosition(strategyID);
+            if (result == 0)
+                return "Flat";
+            else if (result < 0)
+                return "Short";
+            else if (result > 0)
+                return "Long";
+            return "";
         }
     }
 }

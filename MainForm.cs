@@ -101,10 +101,15 @@ namespace dmh.NinjaTraderRemote
             else
                 groupBox1.Text = "Account " + test.acctName + " stats";
 
-            foreach (string order in test.orders)
+            foreach (string order in test.Orders)
             {
-                AddOrderInfoToListView(order, atiManager.ATIClient.OrderStatus(order), listView1);
+                AddOrderInfoToListView(order, listView1);
                 //listBox1.Items.Add(String.Format("Order ID:\t{0}\t({1})", order, atiManager.ATIClient.OrderStatus(order)));
+            }
+
+            foreach (string strategy in test.Strategies)
+            {
+                AddStrategyToListView(strategy, listView2);
             }
 
             lblPnL.Text = test.RealizedPnL.ToString("0.##");
@@ -116,20 +121,45 @@ namespace dmh.NinjaTraderRemote
         {
             //listBox1.Items.Clear();
             listView1.Items.Clear();
+            listView2.Items.Clear();
             lblBuyingPower.Text = "";
             lblCashValue.Text = "";
             lblPnL.Text = "";
             groupBox1.Text = "Account stats";
         }
 
-        private void AddOrderInfoToListView(string orderID, string orderStatus, ListView list)
+        private void AddOrderInfoToListView(string orderID, ListView list)
         {
-            string[] header = new string[2];
+            string orderStatus = atiManager.OrderStatus(orderID);
+            string fillSize = "";
+            
+            if(orderStatus == "Filled")
+            {
+                fillSize = atiManager.Filled(orderID).ToString();
+            }
+
+            string[] header = new string[3];            
+             
             header[0] = orderID;
             header[1] = orderStatus;
+            header[2] = fillSize;
+            
             ListViewItem lvi = new ListViewItem(header);
             list.Items.Add(lvi);
             //
+        }
+
+        private void AddStrategyToListView(string strategyID, ListView list)
+        {
+            string[] header = new string[2];
+
+            string strategyPosition = atiManager.StrategyPosition(strategyID);
+
+            header[0] = strategyID;
+            header[1] = strategyPosition;
+
+            ListViewItem lvi = new ListViewItem(header);
+            list.Items.Add(lvi);
         }
     }
 }

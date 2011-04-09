@@ -30,34 +30,34 @@ namespace dmh.NinjaTraderRemote
 {
     public enum ActionType
     {
-        BUY,
-        SELL
+        Buy,
+        Sell
     };
 
     public enum TimeInForce
     {
-        DAY,
+        Day,
         GTC
     };
 
     public enum OrderType
     {
-        MARKET,
-        LIMIT,
-        STOP,
-        STOPLIMIT
+        Market,
+        Limit,
+        Stop,
+        StopLimit
     };
 
     public enum CommandType
     {
-        CANCEL,
-        CANCELALLORDERS,
-        CHANGE,
-        CLOSEPOSITION,
-        CLOSESTRATEGY,
-        FLATTENEVERYTHING,
-        PLACE,
-        REVERSEPOSITION
+        Cancel,
+        CancelAllOrders,
+        Change,
+        ClosePosition,
+        CloseStrategy,
+        FlattenEverything,
+        Place,
+        ReversePosition
     };
 
     public enum MarketPosition

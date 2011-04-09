@@ -35,18 +35,18 @@ namespace dmh.NinjaTraderRemote
         public double CashValue         { get; set; }
         public double RealizedPnL       { get; set; }
         public MarketPosition Position  { get; set; }
-        public string[] strategies      { get; set; }
+        public string[] Strategies      { get; set; }
         public string acctName          { get; set; }
-        public string[] orders          { get; set; }
+        public string[] Orders          { get; set; }
 
         public void ParseStrategies(string strategiesString)
         {
-            strategies = strategiesString.Split('|');
+            Strategies = strategiesString.Split('|');
         }
 
         public void ParseOrders(string ordersString)
         {
-            orders = ordersString.Split('|');
+            Orders = ordersString.Split('|');
         }
 
     }
