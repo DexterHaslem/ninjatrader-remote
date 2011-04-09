@@ -34,11 +34,11 @@ namespace dmh.NinjaTraderRemote
     // this code sucks bad, I need to rewrite it when I know what I'm doing
     class ATIManager
     {
-        Client ATIClient;
-        bool isConnected;
+        public Client ATIClient;
+        //bool isConnected;
         DateTime connectionStartTime, connectionEndTime;
         ATIAccount account;
-        public string AccountName { get; set; }
+        //public string AccountName { get; set; }
         private string hostName;
         private int port;
 
@@ -55,7 +55,7 @@ namespace dmh.NinjaTraderRemote
                     {
                         Int32.TryParse(chunks[1], out port);
                     }
-                    catch (FormatException ex)
+                    catch // (FormatException ex)
                     {
                         port = 36973;
                     }
@@ -82,7 +82,7 @@ namespace dmh.NinjaTraderRemote
         {
             ATIClient = new Client();
             account = new ATIAccount();
-            AccountName = ""; // SIM101!
+            //AccountName = ""; // SIM101!
 
             // not needed
             hostName = "127.0.0.1";
@@ -94,9 +94,7 @@ namespace dmh.NinjaTraderRemote
             // SetUp is only required if non defaults are to be used (very likely in our case)
             if (hostName != "127.0.0.1" && port != 36973)
             {
-                isConnected = ATIClient.SetUp(hostName, port) == 0 ? true : false;
-
-                if (isConnected)
+                if(ATIClient.SetUp(hostName, port) == 0)
                 {
                     connectionStartTime = DateTime.Now;
                     return true;
@@ -150,9 +148,9 @@ namespace dmh.NinjaTraderRemote
             return tempAcct;
         }
 
-        public void ReadAccountInformation(ATIAccount acct)
+        public void ReadAccountInformation(ATIAccount acct, string accountName)
         {
-            acct = ReadAccountInformation(AccountName);
+            acct = ReadAccountInformation(accountName);
         }
     }
 }

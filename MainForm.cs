@@ -41,18 +41,20 @@ namespace dmh.NinjaTraderRemote
             atiManager = new ATIManager();
             txtHost.Text = atiManager.ConnectionString;
             btnDisconnect.Enabled = false;
+            btnReadAcct.Enabled = false;
+            resetData();
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
+            
             atiManager.ConnectionString = txtHost.Text;
 
             if (atiManager.Connect())
             {
                 btnConnect.Enabled = false;
                 btnDisconnect.Enabled = true;
-                ATIAccount test = atiManager.ReadAccountInformation("");
-                label1.Text = test.BuyingPower.ToString();
+                btnReadAcct.Enabled = true;               
             }
             else
                 MessageBox.Show("Couldn't connect to ATI server!");
@@ -69,8 +71,58 @@ namespace dmh.NinjaTraderRemote
                 {
                     btnConnect.Enabled = true;
                     btnDisconnect.Enabled = false;
+                    btnReadAcct.Enabled = false;
+                    resetData();                    
                 }
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (atiManager.IsConnected)
+                atiManager.Disconnect();
+        }
+
+        private void btnReadAcct_Click(object sender, EventArgs e)
+        {
+            resetData();
+            ATIAccount test = atiManager.ReadAccountInformation(txtAcctName.Text); // "" is sim101
+            //label1.Text = String.Format("{0} {1} {2} : {3}", test.acctName, test.BuyingPower.ToString(), test.CashValue.ToString(),
+            //                             test.RealizedPnL);
+            if (test.acctName == "" || test.acctName == "Sim101")
+                groupBox1.Text = "Account Sim101 stats";
+            else
+                groupBox1.Text = "Account " + test.acctName + " stats";
+
+            foreach (string order in test.orders)
+            {
+                AddOrderInfoToListView(order, atiManager.ATIClient.OrderStatus(order), listView1);
+                //listBox1.Items.Add(String.Format("Order ID:\t{0}\t({1})", order, atiManager.ATIClient.OrderStatus(order)));
+            }
+
+            lblPnL.Text = test.RealizedPnL.ToString("0.##");
+            lblBuyingPower.Text = test.BuyingPower.ToString("0.##");
+            lblCashValue.Text = test.CashValue.ToString("0.##");
+        }
+
+        private void resetData()
+        {
+            //listBox1.Items.Clear();
+            listView1.Items.Clear();
+            lblBuyingPower.Text = "";
+            lblCashValue.Text = "";
+            lblPnL.Text = "";
+            groupBox1.Text = "Account stats";
+        }
+
+        private void AddOrderInfoToListView(string orderID, string orderStatus, ListView list)
+        {
+            string[] header = new string[2];
+            header[0] = orderID;
+            header[1] = orderStatus;
+            ListViewItem lvi = new ListViewItem(header);
+            list.Items.Add(lvi);
+            //
         }
     }
 }
