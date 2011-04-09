@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
             "text1",
             "text2"}, -1);
             this.txtHost = new System.Windows.Forms.TextBox();
@@ -64,14 +64,14 @@
             // 
             // txtHost
             // 
-            this.txtHost.Location = new System.Drawing.Point(280, 18);
+            this.txtHost.Location = new System.Drawing.Point(79, 18);
             this.txtHost.Name = "txtHost";
             this.txtHost.Size = new System.Drawing.Size(151, 22);
             this.txtHost.TabIndex = 0;
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(437, 13);
+            this.btnConnect.Location = new System.Drawing.Point(236, 16);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(69, 27);
             this.btnConnect.TabIndex = 3;
@@ -81,7 +81,7 @@
             // 
             // btnDisconnect
             // 
-            this.btnDisconnect.Location = new System.Drawing.Point(512, 13);
+            this.btnDisconnect.Location = new System.Drawing.Point(311, 16);
             this.btnDisconnect.Name = "btnDisconnect";
             this.btnDisconnect.Size = new System.Drawing.Size(107, 27);
             this.btnDisconnect.TabIndex = 4;
@@ -105,7 +105,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(208, 21);
+            this.label1.Location = new System.Drawing.Point(6, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 17);
             this.label1.TabIndex = 7;
@@ -179,9 +179,9 @@
             this.columnHeader1,
             this.columnHeader2});
             this.listView1.GridLines = true;
-            listViewItem2.StateImageIndex = 0;
+            listViewItem5.StateImageIndex = 0;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem5});
             this.listView1.Location = new System.Drawing.Point(6, 21);
             this.listView1.Name = "listView1";
             this.listView1.ShowGroups = false;
@@ -221,7 +221,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 139);
+            this.label5.Location = new System.Drawing.Point(6, 154);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(98, 17);
             this.label5.TabIndex = 8;
@@ -271,19 +271,20 @@
             // 
             // txtAcctName
             // 
-            this.txtAcctName.Location = new System.Drawing.Point(7, 159);
+            this.txtAcctName.Location = new System.Drawing.Point(110, 151);
             this.txtAcctName.Name = "txtAcctName";
-            this.txtAcctName.Size = new System.Drawing.Size(89, 22);
+            this.txtAcctName.Size = new System.Drawing.Size(73, 22);
             this.txtAcctName.TabIndex = 1;
             // 
             // btnReadAcct
             // 
-            this.btnReadAcct.Location = new System.Drawing.Point(6, 187);
+            this.btnReadAcct.Location = new System.Drawing.Point(6, 177);
             this.btnReadAcct.Name = "btnReadAcct";
-            this.btnReadAcct.Size = new System.Drawing.Size(115, 22);
+            this.btnReadAcct.Size = new System.Drawing.Size(177, 32);
             this.btnReadAcct.TabIndex = 6;
-            this.btnReadAcct.Text = "Read Account";
+            this.btnReadAcct.Text = "Read Account Info";
             this.btnReadAcct.UseVisualStyleBackColor = true;
+            this.btnReadAcct.Click += new System.EventHandler(this.btnReadAcct_Click);
             // 
             // label3
             // 
