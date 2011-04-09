@@ -62,8 +62,8 @@ namespace dmh.NinjaTraderRemote
 
     public enum MarketPosition
     {
-        Flat,
-        Long,
-        Short
+        Flat = 0,
+        Long = 1,
+        Short = - 1
     };
 }

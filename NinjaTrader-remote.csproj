@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ATIAccount.cs" />
     <Compile Include="ATIManager.cs" />
+    <Compile Include="ATIMarketDataManager.cs" />
     <Compile Include="ATIParameterEnums.cs" />
     <Compile Include="MainEntry.cs" />
     <Compile Include="MainForm.cs">

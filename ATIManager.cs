@@ -169,12 +169,24 @@ namespace dmh.NinjaTraderRemote
 
         public string StrategyPosition(string strategyID)
         {
-            int result = ATIClient.StrategyPosition(strategyID);
-            if (result == 0)
+            return GetPositionString(ATIClient.StrategyPosition(strategyID));
+        }
+
+        public string MarketPosition(string instrument, string account)
+        {
+            if (account == "Sim101")
+                account = "";
+
+            return GetPositionString(ATIClient.MarketPosition(instrument, account));
+        }
+
+        public string GetPositionString(int pos)
+        {
+            if (pos == 0)
                 return "Flat";
-            else if (result < 0)
+            else if (pos < 0)
                 return "Short";
-            else if (result > 0)
+            else if (pos > 0)
                 return "Long";
             return "";
         }
