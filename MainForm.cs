@@ -49,11 +49,9 @@ namespace dmh.NinjaTraderRemote
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
-        {
-            
-            atiManager.ConnectionString = txtHost.Text;
-
-            if (atiManager.Connect())
+        {            
+            atiManager.ConnectionString = txtHost.Text;		
+            if (atiManager.Connect())// && atiManager.IsConnected)
             {
                 btnConnect.Enabled = false;
                 btnDisconnect.Enabled = true;
