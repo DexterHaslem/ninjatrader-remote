@@ -82,7 +82,7 @@ namespace dmh.NinjaTraderRemote
             hostName = "127.0.0.1";
             port = 36973;
         }
-
+		
         public bool Connect()
         {
             // SetUp is only required if non defaults are to be used (very likely in our case)
@@ -92,7 +92,8 @@ namespace dmh.NinjaTraderRemote
                     return true;
                 else return false;
             }
-            else return true;
+            else return IsConnected;
+            //else return true;
         }
 
         public bool IsConnected
